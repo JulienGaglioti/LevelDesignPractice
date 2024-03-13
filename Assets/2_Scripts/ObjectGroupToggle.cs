@@ -12,7 +12,14 @@ public class ObjectGroupToggle : MonoBehaviour
         _linkedButton = GetComponentInChildren<ButtonObject>();
         foreach (var item in GameObjectsToToggle)
         {
-            _objectsStartingStates.Add(item.activeSelf);
+            if (item != null)
+            {
+                _objectsStartingStates.Add(item.activeSelf);
+            }
+            else
+            {
+                _objectsStartingStates.Add(true);
+            }
         }
         if (_linkedButton)
         {
@@ -30,9 +37,12 @@ public class ObjectGroupToggle : MonoBehaviour
     {
         for (int i = 0; i < GameObjectsToToggle.Count; i++)
         {
-            bool newState;
-            newState = active ? !_objectsStartingStates[i] : _objectsStartingStates[i];
-            GameObjectsToToggle[i].SetActive(newState);
+            if (GameObjectsToToggle[i] != null)
+            {
+                bool newState;
+                newState = active ? !_objectsStartingStates[i] : _objectsStartingStates[i];
+                GameObjectsToToggle[i].SetActive(newState);
+            }
         }
     }
 }

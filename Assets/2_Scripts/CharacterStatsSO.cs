@@ -24,10 +24,10 @@ public class CharacterStatsSO : ScriptableObject
     public float RotationSmoothTime = 0.12f;
     /* [Tooltip("How much you can control movement while in air (fraction of Max Speed)"), Range(0.0f, 1f)]
     public float InAirManeuverability = 0.6f; */
-    [Tooltip("Max slope angle in degrees"), Range(0.0f, 90f)]
+    /* [Tooltip("Max slope angle in degrees"), Range(0.0f, 90f)]
     public float SlopeLimit = 45f;
     [Tooltip("Force applied when on a slope"), Range(0.0f, 30f)]
-    public float SlopeFallPower = 10f;
+    public float SlopeFallPower = 10f; */
 
     [Header("JUMP")]
     [Tooltip("The immediate velocity applied when jumping")]
@@ -55,6 +55,4 @@ public class CharacterStatsSO : ScriptableObject
     public float DashDuration = 0.2f;
     [Tooltip("Duration of dash slowdown: a small window that starts after the dash ends OR when too close to dash target. During this time, the dash velocity is decreased until it reaches zero")]
     public float DashSlowdownDuration = 1f;
-    [Tooltip("Distance from dash target that triggers dash slowdown"), Range(5, 10)]
-    public float SlowdownDistanceTrigger = 1f;
 }

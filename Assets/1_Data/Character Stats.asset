@@ -18,19 +18,16 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 641
-  MaxSpeed: 8
-  Acceleration: 90
+  MaxSpeed: 11
+  Acceleration: 14
   GroundingForce: -3.33
-  RotationSmoothTime: 0.15
-  SlopeLimit: 50.9
-  SlopeFallPower: 6
-  JumpPower: 18
-  MaxFallSpeed: 25
+  RotationSmoothTime: 0.14
+  JumpPower: 16
+  MaxFallSpeed: 30
   FallAcceleration: 45
   JumpEndEarlyGravityModifier: 10
   CoyoteTime: 0.15
   JumpBuffer: 0.1
-  DashSpeed: 20
-  DashDuration: 0.1
-  DashSlowdownDuration: 1
-  SlowdownDistanceTrigger: 8
+  DashSpeed: 14
+  DashDuration: 0.18
+  DashSlowdownDuration: 0.3

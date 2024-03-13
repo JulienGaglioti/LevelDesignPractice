@@ -1,5 +1,50 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1035976504467676129
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6864256945243004260}
+  - component: {fileID: 5684804288413666319}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6864256945243004260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035976504467676129}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4297302289507707623}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5684804288413666319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035976504467676129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1b00228532f589439e4d5450f73b86b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FollowTarget: {fileID: 4297302289507707623}
 --- !u!1 &1102738383920776159
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,6 +373,7 @@ GameObject:
   - component: {fileID: 6916716625922741699}
   - component: {fileID: 6249578541421513904}
   - component: {fileID: 7671802666577752224}
+  - component: {fileID: 2316225043254091035}
   m_Layer: 6
   m_Name: Character
   m_TagString: Player
@@ -352,6 +398,7 @@ Transform:
   - {fileID: 6514923823891104794}
   - {fileID: 3881012978641555762}
   - {fileID: 7397356695501195536}
+  - {fileID: 6864256945243004260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1833695105032180264
@@ -496,10 +543,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _stats: {fileID: 11400000, guid: 62a28fc12210c88409fb42573a5b041b, type: 2}
   _groundCollisionSphere: {fileID: 8724913455684724477}
-  _collisionCheckRadius: 0.5
+  _collisionCheckRadius: 0.3
   _magneticActionCooldown: 1
   PushUnlocked: 1
   PullUnlocked: 1
+  _grounded: 0
+--- !u!114 &2316225043254091035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7673906475354219665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c67a0cb6f1821143b9a47e07852cd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sensitivity: 0.2
+  CinemachineCameraTarget: {fileID: 6864256945243004260}
+  LockCameraPosition: 0
+  TopClamp: 70
+  BottomClamp: -30
+  CameraAngleOverride: 0
 --- !u!1 &8832899277642455596
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,6 +40,7 @@ public class CharacterController3D : MonoBehaviour
     private bool _magneticPull;
 
     private bool _dashing;
+    private bool _dashSlowdown;
     private float _timeStartedDash;
     private Vector3 _dashDirection = Vector3.zero;
     private float _dashSlowdownTimer;
@@ -102,19 +103,23 @@ public class CharacterController3D : MonoBehaviour
         if (!_dashing)
         {
             _dashSlowdownTimer += Time.fixedDeltaTime;
+            if (_dashSlowdownTimer > _stats.DashSlowdownDuration)
+            {
+                _dashSlowdown = false;
+            }
         }
         _magneticActionCooldownTimer += Time.fixedDeltaTime;
     }
     private void CheckCollisions()
     {
-        // bool groundHit = Physics.CheckSphere(_groundCollisionSphere.position, _collisionCheckRadius, _stats.GroundLayer, QueryTriggerInteraction.Ignore);
         bool groundHit = false;
         if (Physics.SphereCast(transform.position/*  + Vector3.down * _controller.height / 2 */, _collisionCheckRadius, Vector3.down, out _groundHit, 1.2f, _stats.GroundLayer))
         {
-            float slopeAngle = Vector3.Angle(_groundHit.normal, Vector3.up);
+            groundHit = true;
+
+            /* float slopeAngle = Vector3.Angle(_groundHit.normal, Vector3.up);
             if (slopeAngle < _stats.SlopeLimit)
             {
-                groundHit = true;
                 _slopeDirection = Vector3.zero;
                 _onSlope = false;
             }
@@ -123,7 +128,7 @@ public class CharacterController3D : MonoBehaviour
                 _slopeDirection = _groundHit.normal;
                 _slopeDirection.y = 0;
                 _onSlope = true;
-            }
+            } */
         }
 
 
@@ -173,6 +178,7 @@ public class CharacterController3D : MonoBehaviour
             {
                 _dashObject = null;
                 _dashing = false;
+                _dashSlowdown = true;
                 _verticalVelocity = 0;
                 _dashSlowdownTimer = 0;
             }
@@ -208,7 +214,7 @@ public class CharacterController3D : MonoBehaviour
     }
     private void HandleDirection()
     {
-        if (_dashing) return;
+        if (_dashing || _dashSlowdown) return;
 
         float targetSpeed = _stats.MaxSpeed;
 
@@ -268,7 +274,15 @@ public class CharacterController3D : MonoBehaviour
         }
         else
         {
-            _controller.Move((_targetDirection.normalized * _currentSpeed + new Vector3(0.0f, _verticalVelocity, 0.0f) + _dashDirection * _stats.DashSpeed + _slopeDirection * _stats.SlopeFallPower) * Time.fixedDeltaTime);
+            _controller.Move((_targetDirection.normalized * _currentSpeed + new Vector3(0.0f, _verticalVelocity, 0.0f) + _dashDirection * _stats.DashSpeed) * Time.fixedDeltaTime);
+            /* if (_onSlope)
+            {
+                _controller.Move((_targetDirection.normalized * _currentSpeed + new Vector3(0.0f, _verticalVelocity, 0.0f) + _dashDirection * _stats.DashSpeed + _slopeDirection * _stats.SlopeFallPower) * Time.fixedDeltaTime);
+            }
+            else
+            {
+                _controller.Move((_targetDirection.normalized * _currentSpeed + new Vector3(0.0f, _verticalVelocity, 0.0f) + _dashDirection * _stats.DashSpeed) * Time.fixedDeltaTime);
+            } */
         }
     }
 }
