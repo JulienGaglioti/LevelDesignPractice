@@ -393,7 +393,7 @@ MonoBehaviour:
   IsOn: 0
   MaterialWhenOn: {fileID: 2100000, guid: 2f91a41d59a50924da1cf3574a0203ca, type: 2}
   MaterialWhenOff: {fileID: 2100000, guid: d49f3f57f2a55554ea4a750cfaf036c4, type: 2}
-  TimeItStaysOn: 2
-  Cost: 0
+  TimeItStaysOn: 5
+  KeyCost: 0
   Inventory: {fileID: 11400000, guid: 1d304c21c1ef0c24f958cd3110d22363, type: 2}
   CostText: {fileID: 0}

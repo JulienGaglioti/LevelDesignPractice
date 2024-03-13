@@ -27,15 +27,15 @@ public class InventorySO : ScriptableObject
     public int PayKey(int value)
     {
         int paidValue = 0;
-        if (NumberOfCoins > value)
+        if (NumberOfKeys > value)
         {
             paidValue = value;
             AddKey(-value);
         }
         else
         {
-            paidValue = NumberOfCoins;
-            AddKey(-NumberOfCoins);
+            paidValue = NumberOfKeys;
+            AddKey(-NumberOfKeys);
         }
 
         return paidValue;
